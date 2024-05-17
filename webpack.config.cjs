@@ -21,10 +21,18 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.scss$/, // Add this rule to handle SCSS files
+        use: [
+          'style-loader', // Injects styles into the DOM
+          'css-loader', // Translates CSS into CommonJS
+          'sass-loader' // Compiles Sass to CSS
+        ]
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.scss']
   }
 };
