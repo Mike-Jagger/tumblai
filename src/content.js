@@ -3,19 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import CommentComponent from './components/CommentComponent.jsx';
 
-// content.js
-// const commentBox = document.querySelector('N8H25'); 
-
-
 const newPageLoaded = async () => {
     const buttonsContainer = document.getElementsByClassName("MCavR");
     let postInfo;
-    // console.log(buttonsContainer, buttonsContainer.length)
-    console.log("Test new page loaded")
+    console.log(buttonsContainer, buttonsContainer.length);
 
     for (let i = 0; i < buttonsContainer.length; i++) {
         const buttons = buttonsContainer[i].getElementsByClassName("TRX6J");
-        // console.log(buttons, buttons.length)
+        console.log(buttons, buttons.length)
 
         for (let j = 0; j < buttons.length; j++) {
             if (buttons[j].ariaLabel === 'Reply') {
@@ -35,8 +30,8 @@ const newPageLoaded = async () => {
 };
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
-    if (message.type === "NEW" && message.isLoaded) {
-        console.log("New page opened message received")
+    if (message.type === "NEW" && message.isPageLoaded) {
+        // console.log("New page opened message received")
         newPageLoaded();
     }
 });
