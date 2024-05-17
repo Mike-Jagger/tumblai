@@ -33,28 +33,25 @@ const newPageLoaded = async () => {
 };
 
 function observeDOMChanges() {
-    const targetNode = document.body;
+    const targetNode = document.getElementsByClassName("lSyOz t8f_N")[0];
     const config = { childList: true, subtree: true };
   
     const callback = function(mutationsList, observer) {
       for (let mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-          chrome.runtime.sendMessage({ type: 'UPDATE' });
-          break;
+            if (mutation.type === 'childList') {
+            chrome.runtime.sendMessage({ type: 'UPDATE' });
+            break;
+            }
         }
-      }
-    };
+    }
   
     const observer = new MutationObserver(callback);
     observer.observe(targetNode, config);
 }
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
-    console.log("Test");
-
-    observeDOMChanges();
-
     if (message.type === "NEW" && message.isLoaded) {
+      observeDOMChanges();
       newPageLoaded();
     }
 });
