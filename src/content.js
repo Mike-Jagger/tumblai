@@ -10,11 +10,12 @@ import CommentComponent from './components/CommentComponent.jsx';
 const newPageLoaded = async () => {
     const buttonsContainer = document.getElementsByClassName("MCavR");
     let postInfo;
-    console.log(buttonsContainer, buttonsContainer.length)
+    // console.log(buttonsContainer, buttonsContainer.length)
+    console.log("Test new page loaded")
 
     for (let i = 0; i < buttonsContainer.length; i++) {
         const buttons = buttonsContainer[i].getElementsByClassName("TRX6J");
-        console.log(buttons, buttons.length)
+        // console.log(buttons, buttons.length)
 
         for (let j = 0; j < buttons.length; j++) {
             if (buttons[j].ariaLabel === 'Reply') {
@@ -33,28 +34,9 @@ const newPageLoaded = async () => {
     }
 };
 
-function observeDOMChanges() {
-    const targetNode = document.getElementsByClassName("lSyOz t8f_N")[0];
-    const config = { childList: true, subtree: true };
-  
-    const callback = function(mutationsList, observer) {
-      for (let mutation of mutationsList) {
-            if (mutation.type === 'childList') {
-            chrome.runtime.sendMessage({ type: 'UPDATE' });
-            break;
-            }
-        }
-    }
-  
-    const observer = new MutationObserver(callback);
-    observer.observe(targetNode, config);
-}
-
 chrome.runtime.onMessage.addListener((message, sender, response) => {
     if (message.type === "NEW" && message.isLoaded) {
-      observeDOMChanges();
-      newPageLoaded();
+        console.log("New page opened message received")
+        newPageLoaded();
     }
 });
-
-newPageLoaded();
