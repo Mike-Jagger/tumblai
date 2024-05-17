@@ -15,7 +15,7 @@ const newPageLoaded = async () => {
         for (let j = 0; j < buttons.length; j++) {
             if (buttons[j].ariaLabel === 'Reply') {
                 const commentbox = document.createElement('div');
-                commentbox.id = 'root';
+                commentbox.id = 'commentBox';
                 commentbox.className = 'TRX6J';
                 commentbox.style.paddingBottom = '10px';
                 
