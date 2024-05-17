@@ -9,6 +9,7 @@ import CommentComponent from './components/CommentComponent.jsx';
 
 const newPageLoaded = async () => {
     const buttonsContainer = document.getElementsByClassName("MCavR");
+    let postInfo;
     console.log(buttonsContainer, buttonsContainer.length)
 
     for (let i = 0; i < buttonsContainer.length; i++) {
@@ -26,7 +27,7 @@ const newPageLoaded = async () => {
 
                 // Render the React component
                 const root = ReactDOM.createRoot(commentbox)
-                root.render(<CommentComponent replyButton={buttons[j]}/>);
+                root.render(<CommentComponent replyButton={buttons[j]} postInfo={postInfo}/>);
             }
         }
     }
