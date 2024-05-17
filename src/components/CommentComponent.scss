@@ -1,0 +1,97 @@
+.comment-section {
+    --post-padding: 16px;
+    --font-size: .875rem;
+    --test-font-size: 8px;
+    --select-border: #777;
+    --select-focus: blue;
+    --select-arrow: var(--select-border);
+    min-width: 540px;
+    max-width: 540px;
+    height: 35px;
+    max-height: 150px;
+    padding: 5px --post-padding;
+    background-color: #393737;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+}
+  
+.select-tone {
+    width: 50em;
+    min-height: 16px;
+    margin: auto 2em;
+    min-height: 60%;
+    border-radius: 2px;
+    border: solid 1px #52565e;
+    overflow: hidden;
+
+}
+
+select {
+    // A reset of styles, including removing the default dropdown arrow
+    appearance: none;
+    // Additional resets for further consistency
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+
+    font-size: 11px;
+    background-color: #232323;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+}
+
+select::-ms-expand {
+    display: none;
+}
+  
+.button-section {
+    font-size: var(--test-font-size);
+    width: 50em;
+    min-height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    overflow: hidden;
+}
+  
+.button-load, .button-post {
+    padding: 0;
+    text-align: center;
+    width: 40%;
+    max-height: 10%;
+    border: solid 0px;
+    border-radius: 20px;
+    font-weight: bold;
+    overflow: hidden;
+
+}
+
+.button-load {
+    background-color: #f6f6f6;
+    color: black;
+}
+
+.button-load:hover {
+    background-color: white;
+}
+  
+.button-post {
+    background-color: black;
+    color: white;
+}
+
+.button-post:hover {
+    background-color: #232323;
+}
+  
