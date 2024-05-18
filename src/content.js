@@ -33,6 +33,12 @@ function addCommentBoxToReplySection(post, replyButton) {
 
     // Not the best way down here but it works. Use time benchmarks to adjust timing or
     // Implement logic above (not completed yet)
+    const postInfo = {
+        userName: post.getElementsByClassName("W9hfZ")[0].innerText,
+        description: post.getElementsByClassName("LaNUG")[0].innerText,
+        tags: post.getElementsByClassName("hAFp3")[0].innerText
+    }
+
     setTimeout ( () => {
         const replySection = document.getElementsByClassName("EnRJg")[0];
         if (replySection) {
@@ -40,11 +46,11 @@ function addCommentBoxToReplySection(post, replyButton) {
             commentBox.id = 'commentBox';
 
             // console.log("Created component box holder");
-            console.log(document.getElementsByClassName("rEGcu tprzO fYhK7"));
+            // console.log(document.getElementsByClassName("rEGcu tprzO fYhK7"));
 
             replySection.insertBefore(commentBox, document.getElementsByClassName("rEGcu tprzO fYhK7")[0]);
             const root = ReactDOM.createRoot(commentBox)
-            root.render(<CommentComponent replyButton={replyButton}/>);
+            root.render(<CommentComponent replyButton={replyButton} postInfo={postInfo}/>);
         }
     }, 500);
 
