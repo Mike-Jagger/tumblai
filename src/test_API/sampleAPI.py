@@ -11,6 +11,15 @@ with open('TestComments.json', 'r') as f:
 
 @app.route('/tumblrAI', methods=['POST'])
 def get_comment():
+    if request.method == 'OPTIONS':
+        # Allows the GET, POST, and OPTIONS methods from any origin
+        response = app.make_default_options_response()
+        headers = None
+        if request.headers.get('Access-Control-Request-Headers'):
+            headers = request.headers['Access-Control-Request-Headers']
+        response.headers.add("Access-Control-Allow-Headers", headers)
+        return response
+    
     data = request.get_json()
 
     if not data or 'selectedTone' not in data:
