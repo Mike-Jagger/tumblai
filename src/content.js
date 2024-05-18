@@ -33,15 +33,18 @@ function addCommentBoxToReplySection(post, replyButton) {
 
     // Not the best way down here but it works. Use time benchmarks to adjust timing or
     // Implement function above (not completed yet)
-    const postInfo = {
-        userName: post.getElementsByClassName("W9hfZ")[0].innerText,
-        description: post.getElementsByClassName("LaNUG")[0].innerText,
-        tags: post.getElementsByClassName("hAFp3")[0].innerText
-    }
 
     setTimeout ( () => {
         const replySection = document.getElementsByClassName("EnRJg")[0];
         if (replySection) {
+            const postInfo = {
+                userName: post.getElementsByClassName("W9hfZ")[0] ? post.getElementsByClassName("W9hfZ")[0].innerText : null,
+                description: post.getElementsByClassName("LaNUG")[0] ? post.getElementsByClassName("LaNUG")[0].innerText : null,
+                tags: post.getElementsByClassName("hAFp3")[0] ? post.getElementsByClassName("hAFp3")[0].innerText : null
+            }
+
+            console.log(postInfo);
+
             const commentBox = document.createElement('div');
             commentBox.id = 'commentBox';
 
