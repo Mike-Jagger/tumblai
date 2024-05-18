@@ -5,14 +5,12 @@ import json
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# Load the comments from the JSON file
 with open('TestComments.json', 'r') as f:
     comments = json.load(f)
 
 @app.route('/tumblrAI', methods=['POST', 'OPTIONS'])
 def get_comment():
     if request.method == 'OPTIONS':
-        # Allows the GET, POST, and OPTIONS methods from any origin
         response = app.make_default_options_response()
         headers = request.headers.get('Access-Control-Request-Headers', '')
         response.headers.add("Access-Control-Allow-Headers", headers)
