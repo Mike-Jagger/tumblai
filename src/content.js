@@ -11,13 +11,21 @@ const observerOptions = {
 };
 
 function addListener(post) {
-    console.log("Adding");
+    console.log("Getting buttons");
 
     const buttons = post.getElementsByClassName("TRX6J");
     console.log(buttons);
+
     Array.from(buttons).forEach(isReplyButton => {
         if (isReplyButton.ariaLabel === 'Reply') {
             console.log("Reply button found");
+            if (!isReplyButton.dataset.listenerAttached) {
+                console.log("Adding listener");
+                isReplyButton.dataset.listenerAttached = true;
+                // isReplyButton.addEventListener('click', () => addCommentBoxToReplySection(post, isReplyButton));
+            } else {
+                console.log("Listener already Added");
+            }
         }
     });
 
