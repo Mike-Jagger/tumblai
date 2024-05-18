@@ -9,12 +9,23 @@ function CommentComponent(props) {
   const [comment, setComment] = useState('');
 
   const handleGenerateComment = () => {
-    // axios.post('https://api.example.com/generate', { tone })
-    //   .then(response => setComment(response.data.comment))
-    //   .catch(error => console.error(error));
+    axios.post('http://localhost:5000/tumblrAI', {
+      postInfo: props.postInfo,
+      selectedTone: tone
+    })
+    .then(response => {
+      if (response.data.comment) {
+        setComment(response.data.comment);
+      } else {
+        console.error('Failed to get comment:', response.data);
+      }
+    })
+    .catch(error => console.error('Error:', error));
+
+
     const replyTextArea = document.getElementsByClassName('N8H25')[0];
       if (replyTextArea) {
-        replyTextArea.value = "test comment";
+        replyTextArea.value = comment;
   
         // Create a new input event to simulate typing
         const inputEvent = new Event('input', {
