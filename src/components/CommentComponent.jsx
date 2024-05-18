@@ -12,10 +12,7 @@ function CommentComponent(props) {
     // axios.post('https://api.example.com/generate', { tone })
     //   .then(response => setComment(response.data.comment))
     //   .catch(error => console.error(error));
-  };
-
-  const handlePostComment = () => {
-      const replyTextArea = document.getElementsByClassName('N8H25')[0];
+    const replyTextArea = document.getElementsByClassName('N8H25')[0];
       if (replyTextArea) {
         replyTextArea.value = "test comment";
   
@@ -27,15 +24,16 @@ function CommentComponent(props) {
   
         // Dispatch the input event on the text area to enable the post button
         replyTextArea.dispatchEvent(inputEvent);
-        
-        setTimeout ( () => {
-          const postButton = document.getElementsByClassName('TRX6J v6i4P')[0];
-
-          if (postButton) {
-            postButton.click();
-          }
-        }, 200);
       }
+
+  };
+
+  const handlePostComment = () => {
+    const postButton = document.getElementsByClassName('TRX6J v6i4P')[0];
+
+    if (postButton) {
+      postButton.click();
+    }
   };
 
   return (
