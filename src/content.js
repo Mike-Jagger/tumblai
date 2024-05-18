@@ -23,18 +23,23 @@ function addCommentBoxToReplySection(post, replyButton) {
     //       }
     //     }
     // });
-    const replySection = document.getElementsByClassName("EnRJg")[0];
-    console.log(replySection.children);
 
-    const commentBox = document.createElement('div');
-    commentBox.id = 'commentBox';
+    // Not the best way down here but it works. Use time benchmarks to adjust timing or
+    // Implement logic above (not completed yet)
+    setTimeout ( () => {
+        const replySection = document.getElementsByClassName("EnRJg")[0];
+        console.log(replySection.children);
 
-    console.log("Created component box holder");
-    console.log(document.getElementsByClassName("rEGcu tprzO fYhK7"));
+        const commentBox = document.createElement('div');
+        commentBox.id = 'commentBox';
 
-    replySection.insertBefore(commentBox, document.getElementsByClassName("rEGcu tprzO fYhK7")[0]);
-    const root = ReactDOM.createRoot(commentBox)
-    root.render(<CommentComponent replyButton={replyButton}/>);
+        console.log("Created component box holder");
+        console.log(document.getElementsByClassName("rEGcu tprzO fYhK7"));
+
+        replySection.insertBefore(commentBox, document.getElementsByClassName("rEGcu tprzO fYhK7")[0]);
+        const root = ReactDOM.createRoot(commentBox)
+        root.render(<CommentComponent replyButton={replyButton}/>);
+    }, 500);
 }
 
 function addListener(post) {
