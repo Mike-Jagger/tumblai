@@ -15,24 +15,20 @@ function CommentComponent(props) {
   };
 
   const handlePostComment = () => {
-    const reply = props.replyButton; // Get reply button
-    
-    if (reply.ariaLabel === 'Reply') {
-        const commentBox = document.getElementsByClassName('N8H25')[0]; // Get Commentbox
-        if (commentBox) {
-            commentBox.value = comment;
-            const postButton = document.getElementsByClassName('TRX6J v6i4P')[0]; // Get post button
-            postButton.click();
-        }
-    }
+      const replyTextArea = document.getElementsByClassName('N8H25')[0];
+      if (replyTextArea) {
+          replyTextArea.value = "test comment";
+          const postButton = document.getElementsByClassName('TRX6J v6i4P')[0];
+          postButton.click();
+      }
   };
 
   return (
     <div className="comment-section">
       <select value={tone} onChange={(e) => setTone(e.target.value)} className="select-tone">
-        <option value="Friendly">---&emsp;FRIENDLY&emsp;---</option>
-        <option value="Funny">---&emsp;FUNNY&emsp;---</option>
-        <option value="Disagree">---&emsp;DISAGREE&emsp;---</option>
+        <option value="Friendly">--&emsp;FRIENDLY&emsp;--</option>
+        <option value="Funny">--&emsp;FUNNY&emsp;--</option>
+        <option value="Disagree">--&emsp;DISAGREE&emsp;--</option>
         {/* Add more tones as needed */}
       </select>
       <div className="button-section">
