@@ -22,48 +22,17 @@ function CommentComponent(props) {
       if (replyTextArea) {
         replyTextArea.value = response.data.comment;
 
-        // Create a new input event to simulate typing
         const inputEvent = new Event('input', {
           bubbles: true,
           cancelable: true,
         });
 
-        // Dispatch the input event on the text area to enable the post button
         replyTextArea.dispatchEvent(inputEvent);
       }
     } 
     catch(error) {
       console.error('Error:', error)
     }
-
-    // await axios.post('http://localhost:5000/tumblrAI', {
-    //   postInfo: props.postInfo,
-    //   selectedTone: tone
-    // })
-    // .then(response => {
-    //   console.log(response.data);
-    //   if (response.data.comment) {
-    //     setComment(response.data.comment);
-    //   } else {
-    //     console.error('Failed to get comment:', response.data);
-    //   }
-    // })
-    // .then(() => {
-    //   const replyTextArea = document.getElementsByClassName('N8H25')[0];
-    //   if (replyTextArea) {
-    //     replyTextArea.value = comment;
-
-    //     // Create a new input event to simulate typing
-    //     const inputEvent = new Event('input', {
-    //       bubbles: true,
-    //       cancelable: true,
-    //     });
-
-    //     // Dispatch the input event on the text area to enable the post button
-    //     replyTextArea.dispatchEvent(inputEvent);
-    //   }
-    // })
-    // .catch(error => console.error('Error:', error));
 
   };
 
