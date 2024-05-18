@@ -3,8 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import CommentComponent from './components/CommentComponent.jsx';
 
-const targetNode = document.getElementsByClassName("zAlrA")[0];
-
+let observer;
 const observerOptions = {
     childList: true,
     subtree: true,
@@ -43,8 +42,6 @@ function addCommentBoxToReplySection(post, replyButton) {
                 tags: post.getElementsByClassName("hAFp3")[0] ? post.getElementsByClassName("hAFp3")[0].innerText : null
             }
 
-            console.log(postInfo);
-
             const commentBox = document.createElement('div');
             commentBox.id = 'commentBox';
 
@@ -80,9 +77,36 @@ const addListenerToReplyButton = async (newPosts, observer) => {
     }
 };
 
-chrome.runtime.onMessage.addListener((message, sender, response) => {
-    if (message.type === "NEW" && message.isPageLoaded) {
-        const observer = new MutationObserver(addListenerToReplyButton);
+function handleExistingPosts(postsContainer) {
+    console.log("test1");
+    let initialPosts = postsContainer.getElementsByClassName("rZlUD");
+    console.log(initialPosts);
+    Array.from(initialPosts).forEach(post => {
+        addListener(post);
+    });
+}
+
+function initializeObserver(retries = 10, delay = 200) {
+    let targetNode = document.getElementsByClassName("zAlrA")[0];
+    if (targetNode && targetNode.children.length > 2) {
+        console.log(targetNode);
+        if (observer) {
+            observer.disconnect();
+        }
+        observer = new MutationObserver(addListenerToReplyButton);
         observer.observe(targetNode, observerOptions);
+        handleExistingPosts(targetNode);
+    } else if (retries > 0) {
+        setTimeout(() => initializeObserver(retries - 1, delay), delay);
+    } else {
+        console.error("Failed to find the target node.");
+    }
+}
+
+chrome.runtime.onMessage.addListener((message, sender, response) => {
+    if (message.type === "NEW_PAGE_LOAD") {
+        initializeObserver();
     }
 });
+
+// initializeObserver();
