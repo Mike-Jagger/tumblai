@@ -17,9 +17,24 @@ function CommentComponent(props) {
   const handlePostComment = () => {
       const replyTextArea = document.getElementsByClassName('N8H25')[0];
       if (replyTextArea) {
-          replyTextArea.value = "test comment";
+        replyTextArea.value = "test comment";
+  
+        // Create a new input event to simulate typing
+        const inputEvent = new Event('input', {
+          bubbles: true,
+          cancelable: true,
+        });
+  
+        // Dispatch the input event on the text area to enable the post button
+        replyTextArea.dispatchEvent(inputEvent);
+        
+        setTimeout ( () => {
           const postButton = document.getElementsByClassName('TRX6J v6i4P')[0];
-          postButton.click();
+
+          if (postButton) {
+            postButton.click();
+          }
+        }, 200);
       }
   };
 
