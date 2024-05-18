@@ -10,24 +10,39 @@ const observerOptions = {
     subtree: true,
 };
 
-const runSuggestionAI = async () => {
-    // const buttonsContainer = document.getElementsByClassName("MCavR");
-    const contentContainer = document.getElementsByClassName("zAlrA")[0];
-    // let postInfo;
-    console.log(contentContainer);
-
-    // const buttons = contentContainer.getElementsByClassName("TRX6J");
-    // console.log(buttons, buttons.length)
-
-    const posts = contentContainer.getElementsByClassName("rZlUD KYCZY");
-    console.log(posts, posts.length);
-
-    var buttons = [];
-
-    for (let i = 0; i < posts.length; i++) {
-        buttons.push([posts[i].getElementsByClassName("TRX6J")]);
+const runSuggestionAI = async (record, observer) => {
+    for (let post of record) {
+        if (post.type === 'childList') {
+            console.log("New node added");
+            post.addedNodes.forEach(node => {
+                console.log(node);
+                if (node.nodeType === 1) { // Ensure the added node is an element
+                  handleNewPost(node);
+                }
+            });
+        }
     }
-    console.log(buttons);
+
+
+    // const buttonsContainer = document.getElementsByClassName("MCavR");
+    // const contentContainer = document.getElementsByClassName("zAlrA")[0];
+    // // let postInfo;
+    // console.log(contentContainer);
+
+    // // const buttons = contentContainer.getElementsByClassName("TRX6J");
+    // // console.log(buttons, buttons.length)
+
+    // const posts = contentContainer.getElementsByClassName("rZlUD KYCZY");
+    // console.log(posts, posts.length);
+
+    // var buttons = [];
+
+    // for (let i = 0; i < posts.length; i++) {
+    //     buttons.push([posts[i].getElementsByClassName("TRX6J")]);
+    // }
+    // console.log(buttons);
+
+
     // const buttons = contentContainer.getElementsByClassName("TRX6J");
     // console.log(buttons, buttons.length);
 
