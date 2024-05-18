@@ -9,16 +9,15 @@ function CommentComponent(props) {
   const [comment, setComment] = useState('');
 
   const handleGenerateComment = () => {
-    axios.post('https://api.example.com/generate', { tone })
-      .then(response => setComment(response.data.comment))
-      .catch(error => console.error(error));
+    // axios.post('https://api.example.com/generate', { tone })
+    //   .then(response => setComment(response.data.comment))
+    //   .catch(error => console.error(error));
   };
 
   const handlePostComment = () => {
     const reply = props.replyButton; // Get reply button
     
     if (reply.ariaLabel === 'Reply') {
-        reply.click(); // Click on reply button
         const commentBox = document.getElementsByClassName('N8H25')[0]; // Get Commentbox
         if (commentBox) {
             commentBox.value = comment;
