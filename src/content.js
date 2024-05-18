@@ -78,9 +78,7 @@ const addListenerToReplyButton = async (newPosts, observer) => {
 };
 
 function handleExistingPosts(postsContainer) {
-    console.log("test1");
     let initialPosts = postsContainer.getElementsByClassName("rZlUD");
-    console.log(initialPosts);
     Array.from(initialPosts).forEach(post => {
         addListener(post);
     });
@@ -89,7 +87,6 @@ function handleExistingPosts(postsContainer) {
 function initializeObserver(retries = 10, delay = 200) {
     let targetNode = document.getElementsByClassName("zAlrA")[0];
     if (targetNode && targetNode.children.length > 2) {
-        console.log(targetNode);
         if (observer) {
             observer.disconnect();
         }
@@ -108,5 +105,3 @@ chrome.runtime.onMessage.addListener((message, sender, response) => {
         initializeObserver();
     }
 });
-
-// initializeObserver();
