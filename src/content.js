@@ -24,22 +24,30 @@ function addCommentBoxToReplySection(post, replyButton) {
     //     }
     // });
 
+    // Logic to close previously created comment box when another reply section is opened
+    // let isCommentBoxPresent = document.getElementById("commentBox");
+    // if (isCommentBoxPresent) {
+    //     console.log("Removing previous comment box");
+    //     isCommentBoxPresent.remove();
+    // }
+
     // Not the best way down here but it works. Use time benchmarks to adjust timing or
     // Implement logic above (not completed yet)
     setTimeout ( () => {
         const replySection = document.getElementsByClassName("EnRJg")[0];
-        console.log(replySection.children);
+        if (replySection) {
+            const commentBox = document.createElement('div');
+            commentBox.id = 'commentBox';
 
-        const commentBox = document.createElement('div');
-        commentBox.id = 'commentBox';
+            console.log("Created component box holder");
+            console.log(document.getElementsByClassName("rEGcu tprzO fYhK7"));
 
-        console.log("Created component box holder");
-        console.log(document.getElementsByClassName("rEGcu tprzO fYhK7"));
-
-        replySection.insertBefore(commentBox, document.getElementsByClassName("rEGcu tprzO fYhK7")[0]);
-        const root = ReactDOM.createRoot(commentBox)
-        root.render(<CommentComponent replyButton={replyButton}/>);
+            replySection.insertBefore(commentBox, document.getElementsByClassName("rEGcu tprzO fYhK7")[0]);
+            const root = ReactDOM.createRoot(commentBox)
+            root.render(<CommentComponent replyButton={replyButton}/>);
+        }
     }, 500);
+
 }
 
 function addListener(post) {
