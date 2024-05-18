@@ -9,15 +9,14 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 with open('TestComments.json', 'r') as f:
     comments = json.load(f)
 
-@app.route('/tumblrAI', methods=['POST'])
+@app.route('/tumblrAI', methods=['POST', 'OPTIONS'])
 def get_comment():
     if request.method == 'OPTIONS':
         # Allows the GET, POST, and OPTIONS methods from any origin
         response = app.make_default_options_response()
-        headers = None
-        if request.headers.get('Access-Control-Request-Headers'):
-            headers = request.headers['Access-Control-Request-Headers']
+        headers = request.headers.get('Access-Control-Request-Headers', '')
         response.headers.add("Access-Control-Allow-Headers", headers)
+        response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
         return response
     
     data = request.get_json()
