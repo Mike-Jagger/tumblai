@@ -32,7 +32,7 @@ function addCommentBoxToReplySection(post, replyButton) {
     // });
 
     // Not the best way down here but it works. Use time benchmarks to adjust timing or
-    // Implement logic above (not completed yet)
+    // Implement function above (not completed yet)
     const postInfo = {
         userName: post.getElementsByClassName("W9hfZ")[0].innerText,
         description: post.getElementsByClassName("LaNUG")[0].innerText,
@@ -45,9 +45,6 @@ function addCommentBoxToReplySection(post, replyButton) {
             const commentBox = document.createElement('div');
             commentBox.id = 'commentBox';
 
-            // console.log("Created component box holder");
-            // console.log(document.getElementsByClassName("rEGcu tprzO fYhK7"));
-
             replySection.insertBefore(commentBox, document.getElementsByClassName("rEGcu tprzO fYhK7")[0]);
             const root = ReactDOM.createRoot(commentBox)
             root.render(<CommentComponent replyButton={replyButton} postInfo={postInfo}/>);
@@ -57,20 +54,13 @@ function addCommentBoxToReplySection(post, replyButton) {
 }
 
 function addListener(post) {
-    // console.log("Getting buttons");
-
     const buttons = post.getElementsByClassName("TRX6J");
-    // console.log(buttons);
 
     Array.from(buttons).forEach(isReplyButton => {
         if (isReplyButton.ariaLabel === 'Reply') {
-            // console.log("Reply button found");
             if (!isReplyButton.dataset.listenerAttached) {
-                // console.log("Adding listener");
                 isReplyButton.dataset.listenerAttached = true;
                 isReplyButton.addEventListener('click', () => addCommentBoxToReplySection(post, isReplyButton));
-            } else {
-                // console.log("Listener already Added");
             }
         }
     });
@@ -78,26 +68,18 @@ function addListener(post) {
 }
 
 const addListenerToReplyButton = async (newPosts, observer) => {
-    // console.log(newPosts);
     for (let post of newPosts) {
         // Check if new node is a new post
         if (post.type === 'childList' && (post.target.className === "rZlUD KYCZY W45iW" || post.target.className === "rZlUD KYCZY F4Tcn")) 
         {
-            // console.log(post.target);
-
             addListener(post.target);
-
-            // console.log("New node added");
         }
     }
 };
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
     if (message.type === "NEW" && message.isPageLoaded) {
-        // console.log("New page opened message received")
-
         const observer = new MutationObserver(addListenerToReplyButton);
-
         observer.observe(targetNode, observerOptions);
     }
 });
