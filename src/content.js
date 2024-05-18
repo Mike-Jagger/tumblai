@@ -10,6 +10,33 @@ const observerOptions = {
     subtree: true,
 };
 
+function addCommentBoxToReplySection(post, replyButton) {
+    // const replySectionObserver = new MutationObserver((mutationsList, observer) => {
+    //     for (let mutation of mutationsList) {
+    //       if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+    //         mutation.addedNodes.forEach(node =&gt; {
+    //           if (node.nodeType === 1 && node.classList.contains('EnRJg')) {
+    //             replySectionObserver.disconnect(); // Stop observing once the reply section is found
+    //             executeAfterReplyLoaded(post, replyButton);
+    //           }
+    //         });
+    //       }
+    //     }
+    // });
+    const replySection = document.getElementsByClassName("EnRJg")[0];
+    console.log(replySection.children);
+
+    const commentBox = document.createElement('div');
+    commentBox.id = 'commentBox';
+
+    console.log("Created component box holder");
+    console.log(document.getElementsByClassName("rEGcu tprzO fYhK7"));
+
+    replySection.insertBefore(commentBox, document.getElementsByClassName("rEGcu tprzO fYhK7")[0]);
+    const root = ReactDOM.createRoot(commentBox)
+    root.render(<CommentComponent replyButton={replyButton}/>);
+}
+
 function addListener(post) {
     console.log("Getting buttons");
 
@@ -22,7 +49,7 @@ function addListener(post) {
             if (!isReplyButton.dataset.listenerAttached) {
                 console.log("Adding listener");
                 isReplyButton.dataset.listenerAttached = true;
-                // isReplyButton.addEventListener('click', () => addCommentBoxToReplySection(post, isReplyButton));
+                isReplyButton.addEventListener('click', () => addCommentBoxToReplySection(post, isReplyButton));
             } else {
                 console.log("Listener already Added");
             }
