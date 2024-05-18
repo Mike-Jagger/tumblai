@@ -10,13 +10,18 @@ const observerOptions = {
     subtree: true,
 };
 
-const runSuggestionAI = async (record, observer) => {
-    for (let post of record) {
+function handleNewPost(node) {
+    console.log("Adding");
+}
+
+const runSuggestionAI = async (newPosts, observer) => {
+    console.log(newPosts);
+    for (let post of newPosts) {
         if (post.type === 'childList') {
             console.log("New node added");
             post.addedNodes.forEach(node => {
                 console.log(node);
-                if (node.nodeType === 1) { // Ensure the added node is an element
+                if (node.nodeType === 1) {
                   handleNewPost(node);
                 }
             });
