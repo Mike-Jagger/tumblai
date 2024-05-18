@@ -10,22 +10,38 @@ const observerOptions = {
     subtree: true,
 };
 
-function handleNewPost(node) {
+function addListener(post) {
     console.log("Adding");
+
+    const buttons = post.getElementsByClassName("TRX6J");
+    console.log(buttons);
+    Array.from(buttons).forEach(isReplyButton => {
+        if (isReplyButton.ariaLabel === 'Reply') {
+            console.log("Reply button found");
+        }
+    });
+
 }
 
-const runSuggestionAI = async (newPosts, observer) => {
-    console.log(newPosts);
+const addListenerToReplyButton = async (newPosts, observer) => {
+    // console.log(newPosts);
     for (let post of newPosts) {
-        if (post.type === 'childList') {
+        // Check if new node is a new post
+        if (post.type === 'childList' && 
+            (post.target.className === "rZlUD KYCZY W45iW" || post.target.className === "rZlUD KYCZY F4Tcn")) 
+            {
+            console.log(post.target);
+
+            addListener(post.target);
+
             console.log("New node added");
-            post.addedNodes.forEach(node => {
-                console.log(node);
-                if (node.nodeType === 1) {
-                  handleNewPost(node);
-                }
-            });
-        }
+            // post.addedNodes.forEach(node => {
+            //     console.log(node);
+            //     if (node.nodeType === 1) {
+            //       handleNewPost(node);
+            //     }
+            // });
+            }
     }
 
 
@@ -75,7 +91,7 @@ const runSuggestionAI = async (newPosts, observer) => {
 chrome.runtime.onMessage.addListener((message, sender, response) => {
     if (message.type === "NEW" && message.isPageLoaded) {
         // console.log("New page opened message received")
-        const observer = new MutationObserver(runSuggestionAI);
+        const observer = new MutationObserver(addListenerToReplyButton);
 
         observer.observe(targetNode, observerOptions);
     }
