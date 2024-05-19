@@ -101,7 +101,7 @@ tumblai/
 │   │   ├── PopUpWindow.scss
 │   │   ├── Switch.jsx
 │   │   └── Switch.scss
-|   |── test_API/
+│   │── test_API/
 │   │   │── sampleAPI.py
 │   │   └── TestComments.json
 │   ├── content.js
@@ -396,5 +396,6 @@ Webpack supports all browsers that are [ES5-compliant](https://kangax.github.io/
 
 > **NB**: This was gotten from [Webpack's repository](https://github.com/webpack/webpack) and you can find more info in the project's [README](https://github.com/webpack/webpack/blob/main/README.md).
 
+<br>
 
-### You can read more about [Python Flask](https://flask.palletsprojects.com/en/3.0.x/) and [Flask CORS](https://pypi.org/project/Flask-Cors/1.10.3/) if you want to learn more about them
+You can read more about [Python Flask](https://flask.palletsprojects.com/en/3.0.x/) and [Flask CORS](https://pypi.org/project/Flask-Cors/1.10.3/) if you want to learn more about them
