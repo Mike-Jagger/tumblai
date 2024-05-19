@@ -94,15 +94,16 @@ tumblai/
 │   └── robots.txt
 ├── src/
 │   ├── components/
-│   │   ├── test_API/
-│   │   │   ├── sampleAPI.py
-│   │   │   └── TestComments.json
+│   │   ├── 
 │   │   ├── CommentComponent.jsx
 │   │   ├── CommentComponent.scss
 │   │   ├── PopUpWindow.jsx
 │   │   ├── PopUpWindow.scss
 │   │   ├── Switch.jsx
 │   │   └── Switch.scss
+|   |── test_API/
+│   │   │── sampleAPI.py
+│   │   └── TestComments.json
 │   ├── content.js
 │   ├── index.js
 │   ├── popup.scss
@@ -128,7 +129,7 @@ Webpack is used to bundle the React application. To install and configure Webpac
     ``` bash
     npm install webpack-dev-server --save-dev
     ```
-    > Proceed with step __3__ if the file `webpack.config.cjs` doesn't exist in your file structure
+    > Proceed with step __3__ if the file `webpack.config.cjs` doesn't exist in your file structure or if you want to tweak it to fit your needs, delete and customize as you need! <br>
 
 3. **Create Webpack Configuration:** <br>
     Create a file named `webpack.config.cjs` in the root directory and add the following configuration:
@@ -178,6 +179,70 @@ SCSS is used for styling the components. To install SCSS, follow these steps:
     ``` bash
     npm install sass-loader sass webpack --save-dev
     ```
+### Python Flask
+Python Flask is used to create the backend API. To install and run Flask, follow these steps:
+1. **Install Flask:**
+    ``` bash
+    pip install Flask
+    ```
+    > Proceed with step __2__ if the files `sampleAPI.py` and `TestComments.json` don't exist in your file structure or if you want to tweak it to fit your needs. <br>
+2. **Create a Flask App:** <br>
+    If you want to experiment creating the API on your own, go ahead and delete the files in the folder `src/test_API` then follow these steps: <br>
+    - Create a file called `myOwnAPI.py` and include the following code that you can modify:
+        ``` python
+        from flask import Flask, request, jsonify
+        from flask_cors import CORS
+        import json
+
+        app = Flask(__name__)
+
+        with open('TestComments.json', 'r') as f:
+            comments = json.load(f)
+
+        @app.route('/tumblrAI', methods=['POST', 'OPTIONS'])
+        def get_comment():
+            data = request.get_json()
+
+            if not data or 'selectedTone' not in data:
+                return jsonify({"error": "Invalid request"}), 400
+
+            selected_tone = data['selectedTone'].lower()
+
+            if selected_tone in comments:
+                response = {
+                    "comment": comments[selected_tone]
+                }
+                return jsonify(response)
+            else:
+                return jsonify({"error": "Tone not found"}), 404
+
+        if __name__ == '__main__':
+            app.run(host="localhost", port=5000, debug=True)
+
+        ```
+    - When you are done tweaking the code, you can then create your custom comments by creating a file called `myOwnSampleComments.json` and include the following `json` object:
+        ``` json
+        {
+            "friendly": "This is a friendly comment",
+            "funny": "This is a funny comment",
+            "disagree": "I disagree with this"
+        }
+        ```
+    - You can add as many comments and tones as you want! Something cool to do will be to generate different comments each time a request is made to a specific tone. You could modify the json items as follows:
+        ``` json
+        {
+            ...
+
+            "friendly": 
+                ["This is a friendly comment",
+                 "This is another friendly comment", 
+                 ...],
+            
+            ...
+        }
+        ```
+> Once you try out the extension, you might receive a CORS error from your browser, proceed with the next step to fix this issue
+
 
 
 
