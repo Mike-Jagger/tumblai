@@ -1,0 +1,56 @@
+* {
+    color: white;
+}
+
+body {
+    background-color: black;
+}
+
+.title {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tumblr {
+    font-size: 35px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.ai {
+    font-size: 48px;
+    color: #ffcd3c;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.label {
+    display: inline-block;
+}
+
+.pop-up-window {
+    background-color: #393737;
+    min-height: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    max-width: 200px;
+    display: flex;
+    flex: 70% 20%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.onOff {
+    display: flex;
+    width: 75%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
