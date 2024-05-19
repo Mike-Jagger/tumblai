@@ -289,12 +289,21 @@ Flask-CORS is used to handle Cross-Origin Resource Sharing (CORS) in Flask appli
 - **Robust Unit Tests:** Design and create more robust unit tests to ensure project requirements are still met in case of modification and ensure features work as expected.
 
 ## Contributing
+Contributions are more than welcome to TumblAI! Please follow these steps to contribute:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+Create a new Pull Request.
+
+Feel free to implement as many features as you would like and checkout this [Kanban Board](https://www.figma.com/design/Ki8NSxqNwZo68KmS0O3x5u/TumblrAI?node-id=0%3A1&t=Y70IPMqby1BIO1up-1) to help work on some issues and features already planned to be implemented!
 
 ## License
-
-
+TumblAI is released under the MIT License. See the [LICENSE](https://opensource.org/license/mit) file for more details.
 
 > The next section provides short tutorials if you want to learn more about **React**, **Webpack**, and **Python Flask**
+
+<br>
 
 # Getting Started with Create React App
 
@@ -366,3 +375,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
