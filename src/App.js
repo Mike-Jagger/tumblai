@@ -1,10 +1,9 @@
-import CommentComponent from './components/CommentComponent.jsx';
-import './App.css';
+import PopUpWindow from './components/PopUpWindow.jsx';
 
 function App() {
   return (
     <div className="App">
-      <CommentComponent />
+      <PopUpWindow />
     </div>
   );
 }
