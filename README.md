@@ -243,8 +243,32 @@ Python Flask is used to create the backend API. To install and run Flask, follow
         ```
 > Once you try out the extension, you might receive a CORS error from your browser, proceed with the next step to fix this issue
 
+### Python Flask-CORS
+Flask-CORS is used to handle Cross-Origin Resource Sharing (CORS) in Flask applications. To install and use Flask-CORS, follow these steps:
 
+1. **Install Flask-CORS:**
+    ``` bash
+    pip install Flask-CORS
+    ```
+1. **Add CORS to Flask App:** <br>
+    In the `sampleAPI.py` file, add the following lines to enable CORS:
+    ``` python
+    ...
+    app = Flask(__name__)
+    CORS(app, resources={r"/*": {"origins": "*"}})
+    ...
 
+    ...
+    def get_comment():
+        if request.method == 'OPTIONS':
+            response = app.make_default_options_response()
+            headers = request.headers.get('Access-Control-Request-Headers', '')
+            response.headers.add("Access-Control-Allow-Headers", headers)
+            response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
+            return response
+            ...
+    ```
+> This should solve any issues you encounter with CORS once you run the app again
 
 ## Future Enhancements
 
