@@ -70,7 +70,13 @@ function addListener(post) {
 const addListenerToReplyButton = async (newPosts, observer) => {
     for (let post of newPosts) {
         // Check if new node is a new post
-        if (post.type === 'childList' && (post.target.className === "rZlUD KYCZY W45iW" || post.target.className === "rZlUD KYCZY F4Tcn")) 
+        if (post.type === 'childList' && 
+            (post.target.className === "rZlUD KYCZY W45iW" || 
+             post.target.className === "rZlUD KYCZY F4Tcn" ||
+             post.target.className === "rZlUD F4Tcn" ||
+             post.target.className === "rZlUD W45iW"
+            )
+        ) 
         {
             addListener(post.target);
         }
@@ -101,7 +107,7 @@ function initializeObserver(retries = 10, delay = 200) {
 }
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
-    if (message.type === "NEW_PAGE_LOAD") {
+    if (message.type === "NEW_PAGE_LOAD" || message.type === "URL_CHANGED") {
         initializeObserver();
     }
 });
