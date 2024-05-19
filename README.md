@@ -271,6 +271,22 @@ Flask-CORS is used to handle Cross-Origin Resource Sharing (CORS) in Flask appli
 > This should solve any issues you encounter with CORS once you run the app again
 
 ## Future Enhancements
+### Performance Improvements
+- **Reduce Latency for Comment Box Appearance:** Implement logic to detect when the reply section is opened to minimize delay.
+- **Fix Issues with Routing Between Pages:** Enhance the background script to monitor URL changes and send a URL_CHANGED message to the content script.
+### User Interface Enhancements
+- **Remove Previously Added Comment Box:** Implement logic to remove previously added comment boxes when a new reply section is opened.
+- **Implement Multiple Comment Boxes:** Support multiple comment boxes for different reply sections simultaneously.
+- **Implement Toggling Extension On/Off:** Implement the logic to turn the integration of the comment boxes to generate comments on/off when user interacts with extension popup window.
+### AI Model Integration
+- **Tailored AI Responses:** Integrate more sophisticated AI models to generate contextual and relevant comments, like [openAI](https://openai.com/index/introducing-chatgpt-and-whisper-apis/) or [Haiku](https://www.haiku-os.org/docs/api/).
+- **Improved Test API:** Improve on existing test API by integrating free AI model APIs, such as [Free-Auto-GPT](https://github.com/IntelligenzaArtificiale/Free-Auto-GPT).
+### Enhanced User Customization
+- **Customizable Tones and Responses:** Allow users to define and customize their own tones and responses.
+- **Theme Colors:** Allow users to change theme colors from themes available.
+### Robust Error Handling and Logging
+- **Comprehensive Error Logging and notifications:** Implement comprehensive error logging and notifications to improve error detection and troubleshooting and inform user in case of failures.
+- **Robust Unit Tests:** Design and create more robust unit tests to ensure project requirements are still met in case of modification and ensure features work as expected.
 
 ## Contributing
 
