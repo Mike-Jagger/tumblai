@@ -120,18 +120,18 @@ tumblai/
 ## Other Dependencies
 ### Webpack
 Webpack is used to bundle the React application. To install and configure Webpack, follow these steps:
-1. Install Webpack and Webpack CLI:
+1. **Install Webpack and Webpack CLI:**
     ``` bash
     npm install webpack webpack-cli --save-dev
     ```
-2. Install Webpack Dev Server:
+2. **Install Webpack Dev Server:**
     ``` bash
     npm install webpack-dev-server --save-dev
     ```
     > Proceed with step __3__ if the file `webpack.config.cjs` doesn't exist in your file structure
 
-3. Create Webpack Configuration:
-    - Create a file named webpack.config.cjs in the root directory and add the following configuration:
+3. **Create Webpack Configuration:** <br>
+    Create a file named `webpack.config.cjs` in the root directory and add the following configuration:
     ``` js
     const path = require('path');
 
@@ -171,6 +171,12 @@ Webpack is used to bundle the React application. To install and configure Webpac
         extensions: ['.js', '.jsx', '.scss']
     }
     };
+    ```
+### SCSS
+SCSS is used for styling the components. To install SCSS, follow these steps:
+1. **Install SCSS Loader and Dependencies:**
+    ``` bash
+    npm install sass-loader sass webpack --save-dev
     ```
 
 
