@@ -376,3 +376,22 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+<br>
+
+# Introduction to Webpack
+[Webpack](https://github.com/webpack/webpack/blob/main/README.md) is a bundler for modules. The main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
+
+## TL;DR
+- Bundles [ES Modules](https://www.2ality.com/2014/09/es6-modules-final.html), [CommonJS](http://wiki.commonjs.org/), and [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) modules (even combined).
+- Can create a single bundle or multiple chunks that are asynchronously loaded at runtime (to reduce initial loading time).
+- Dependencies are resolved during compilation, reducing the runtime size.
+- Loaders can preprocess files while compiling, e.g. TypeScript to JavaScript, - Handlebars strings to compiled functions, images to Base64, etc.
+- Highly modular plugin system to do whatever else your application requires.
+
+## Get Started
+Check out webpack's quick [Get Started](https://webpack.js.org/guides/getting-started) guide and the [other guides](https://webpack.js.org/guides/).
+
+## Browser Compatibility
+Webpack supports all browsers that are [ES5-compliant](https://kangax.github.io/compat-table/es5/) (IE8 and below are not supported). Webpack also needs `Promise` for `import()` and `require.ensure()`. If you want to support older browsers, you will need to [load a polyfill](https://webpack.js.org/guides/shimming/) before using these expressions.
+
+> **NB**: This was gotten from [Webpack's repository](https://github.com/webpack/webpack/blob/main/README.md) and you can find more info from the linked readme.
