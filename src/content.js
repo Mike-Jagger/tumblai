@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import CommentComponent from './components/CommentComponent.jsx';
 
+let extensionEnabled = true;
 let observer;
 const observerOptions = {
     childList: true,
@@ -105,6 +106,21 @@ function initializeObserver(retries = 10, delay = 200) {
         console.error("Failed to find the target node.");
     }
 }
+
+/* Prototype to turn extension on and off */
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'ENABLE_EXTENSION') {
+    extensionEnabled = true;
+    console.log("Extension is enabled");
+    // initializeObserver();  // Re-initialize the observer when the extension is enabled
+  } else if (message.action === 'DISABLE_EXTENSION') {
+    extensionEnabled = false;
+    console.log("Extension is disabled");
+    if (observer) {
+    //   observer.disconnect();  // Disconnect the observer when the extension is disabled
+    }
+  }
+});
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
     if (message.type === "NEW_PAGE_LOAD" || message.type === "URL_CHANGED") {
