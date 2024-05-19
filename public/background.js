@@ -7,7 +7,13 @@ chrome.runtime.onInstalled.addListener(() => { // Fire on install or update
                 type: "NEW_PAGE_LOAD",
                 url: tab.url,
             });
-        }
+        } else if (changeInfo.url && tab.url.includes('tumblr.com')) {
+          console.log('URL Changed:', changeInfo.url);
+          chrome.tabs.sendMessage(tabId, {
+              type: "URL_CHANGED",
+              newUrl: changeInfo.url
+          });
+      }
     });
 });
 
