@@ -9,6 +9,7 @@ TumblAI is a Chrome extension designed to enhance user engagement on Tumblr by l
     - [For Users](#for-users-beta)
     - [For Developers](#for-developers)
 - [Usage](#usage)
+- [Demo](#demo)
 - [Architecture](#architecture)
 - [File Structure](#file-structure)
 - [Other Dependencies](#other-dependencies)
@@ -55,15 +56,26 @@ TumblAI is a Chrome extension designed to enhance user engagement on Tumblr by l
     - Click "Load unpacked" and select the build folder.
 
 ## Usage
-### 1. Enable the Extension:
+### 1. Enable the Extension (Beta):
 - Click on the TumblAI icon in the Chrome toolbar.
 - Toggle the switch to "ON".
-### 2. Generate Comments:
-- Navigate to Tumblr and open a post.
-- Click on the "Reply" button of a post.
+### 2. Start Flask Server:
+- Head to `src/test_API` and open `sampleAPI.py`
+- If you are using an IDE such as VSCode, run the script and you should see the server started on **port 5000**
+- If you aren't, open up cmd (on windows) or terminal (on Mac or Linux) and navigate to the `test_API` folder
+- Type `python sampleAPI.py`(windows) or `python3 sampleAPI.py`(linux or Mac) and press enter (Note that python 3 was used for development and some features might not be supported with python 2)
+### 3. Generate Comments:
+- Navigate to [Tumblr](https://www.tumblr.com/) scroll down till you see a post.
+- Click on the "Reply" button of the post.
 - Select the tone for your comment from the dropdown.
-- Click "Load" to generate a comment.
-- Click "Post" to post the generated comment.
+- Click **Load** to generate a comment.
+- Click **Post** to post the generated comment.
+
+## Demo
+Here is a demo of the extension in action:
+![](https://github.com/Mike-Jagger/tumblai/blob/main/Documentation/demo1.gif)
+
+You can also view the design on Canva using this [link](https://www.canva.com/design/DAGFXtyBphI/Zwbv8SlMQXMNtD94NmeK4w/edit?utm_content=DAGFXtyBphI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton).
 
 ## Architecture
 ### Frontend (Chrome Extension)
