@@ -26,7 +26,7 @@ TumblAI is a Chrome extension designed to enhance user engagement on Tumblr by l
 
 ## Installation
 ### For Users (Beta)
-> Feature is not realeased yet. Kindly head to the [Devs](#forDevs) section
+> Feature is not realeased yet. Kindly head to the [Devs](#for-developers) section
 1. Download the Extension: Download the latest release of TumblAI from the [Releases](#) page.
 2. Load Extension:
     - Open Chrome and navigate to chrome://extensions/.
