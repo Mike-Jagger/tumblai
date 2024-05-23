@@ -35,7 +35,7 @@ TumblAI is a Chrome extension designed to enhance user engagement on Tumblr by l
 ### For Developers
 1. Clone the Repository:
     ``` bash
-    git clone https://github.com/yourusername/tumblai.git
+    git clone https://github.com/Mike-Jagger/tumblai.git
     cd tumblai
     ```
 2. Install Dependencies:
